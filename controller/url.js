@@ -22,7 +22,6 @@ async function handleRedirectUrl(req, res){
       timestamp:Date.now(),
     }
   }});
-   
   res.redirect(entry.redirectURL);
 }
 

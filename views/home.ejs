@@ -3,9 +3,48 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>URL Shortener</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
 </head>
 <body>
-    <h1>This is from Server</h1>
+    <h1>URL Shortener</h1>
+    <form action="/url" method="post">
+    <label>Enter the Original URL</label>
+    <input  type="text" required name="url" />
+    <button type="submit" >Generate</button><br/> <br/>
+    </form>
+    <table>
+        <thead>
+            <tr>
+                <th>Sr. No</th>
+                <th>Short URL</th>
+                <th>Redirect URL</th>
+                <th>No of Clicks</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% for (let i = 0; i < urls.length; i++) { %>
+                <tr>
+                    <td><%= i + 1 %></td>
+                    <td><%= urls[i].shortId %></td>
+                    <td><%= urls[i].redirectURL %></td>
+                    <td><%= urls[i].visitHistory.length %></td>
+                </tr>
+            <% } %>
+        </tbody>
+    </table>
 </body>
 </html>
